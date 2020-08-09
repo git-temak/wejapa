@@ -28,7 +28,7 @@
 				$symbol = preg_match('@[^\w]@', $password);
 
 			 	if(isset($_POST['submit'])){
-			 	echo '<div class="col text-center"><h2><u>Recorded Data</u></h2><br>
+			 	echo '<div class="col text-center text-white"><h2><u>Recorded Data</u></h2><br>
 						<h4 class="text-danger"><b>First Name:</b> '. $fname .'</h4><br>
 						<h4 class="text-danger"><b>Last Name:</b> '. $lname .'</h4><br>
 						<h4 class="text-danger"><b>Email Address:</b> '. $email .'</h4><br>
