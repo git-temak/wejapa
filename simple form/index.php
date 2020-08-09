@@ -16,7 +16,7 @@
 			<div class="col text-center">
 				<h1>Contact Form</h1>
 				<p>Please fill in your details below. Kindly note that ALL fields are required. Thank you!</p>
-				<form class="pt-3 my-4" action="form.php" method="post" onsubmit="return genderCheck()">
+				<form class="pt-3 my-4" action="form.php" method="post" onsubmit="return genderValidation()">
 					<div class="row justify-content-center mx-md-5 px-md-4">
 					    <div class="col-6">
 					      <label class="sr font-weight-bold" for="firstName">First Name</label>
@@ -101,7 +101,7 @@
 	<!-- END SCRIPTS -->
 
 	<script type="text/javascript">
-		function genderCheck()
+		function genderValidation()
 		{
 		    var form_data = new FormData(document.querySelector("form"));
 		    
