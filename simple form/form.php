@@ -28,13 +28,16 @@
 				$symbol = preg_match('@[^\w]@', $password);
 
 			 	if(isset($_POST['submit'])){
+
+		 		if(!empty($_POST['genderCheck'])){foreach($_POST['genderCheck'] as $selected){}}
+			 	
 			 	echo '<div class="col text-center text-white"><h2><u>Recorded Data</u></h2><br>
 						<h4 class="text-danger"><b>First Name:</b> '. $fname .'</h4><br>
 						<h4 class="text-danger"><b>Last Name:</b> '. $lname .'</h4><br>
 						<h4 class="text-danger"><b>Email Address:</b> '. $email .'</h4><br>
 						<h4 class="text-danger"><b>Date of Birth:</b> '. $dob .'</h4><br>
 						<h4 class="text-danger"><b>Department:</b> '. $department .'</h4><br>
-						<h4 class="text-danger"><b>Gender:</b> '. $gender .'</h4><br>
+						<h4 class="text-danger"><b>Gender:</b> '. $selected .'</h4><br>
 						<h4 class="text-danger"><b>Favourite Color:</b> '. $favColor .'</h4></div>';
 
 					if(!$uppercase || !$lowercase || !$number || !$symbol || strlen($password) < 15) {

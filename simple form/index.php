@@ -55,16 +55,16 @@
 					      	</div>
 					      	<div class="form-inline justify-content-center">
 						      <div class="custom-control custom-checkbox pr-3">
-						        <input type="checkbox" class="custom-control-input" id="male" name="genderCheck">
+						        <input type="checkbox" class="custom-control-input" id="male" name="genderCheck[]" value="Male">
 						        <label class="custom-control-label" for="male">Male</label>
 						      </div>
 						      <div class="custom-control custom-checkbox">
-						        <input type="checkbox" class="custom-control-input" id="female" name="genderCheck">
+						        <input type="checkbox" class="custom-control-input" id="female" name="genderCheck[]" value="Female">
 						        <label class="custom-control-label" for="female">Female</label>
 						      </div>
 						    </div>
 					    </div>
-					    <div class="col-12 col-md-5 pb-md-4">
+					    <div class="col-12 col-md-5 pt-4 pt-md-0 pb-4">
 					      <label class="sr font-weight-bold" for="department">Department</label>
 					      <div class="form-group">
 					        <select class="form-control" name="department" id="department">
@@ -105,7 +105,7 @@
 		{
 		    var form_data = new FormData(document.querySelector("form"));
 		    
-		    if(!form_data.has("genderCheck"))
+		    if(!form_data.has("genderCheck[]"))
 		    {
 		        document.getElementById("chk_option_error").style.display = "block";
 		        return false;
