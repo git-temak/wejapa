@@ -64,7 +64,7 @@
 						      </div>
 						    </div>
 					    </div>
-					    <div class="col-6 col-md-5 pb-md-4">
+					    <div class="col-12 col-md-5 pb-md-4">
 					      <label class="sr font-weight-bold" for="department">Department</label>
 					      <div class="form-group">
 					        <select class="form-control" name="department" id="department">
@@ -75,7 +75,7 @@
 				            </select>
 					      </div>
 					    </div>
-					    <div class="col-12 pb-md-4">
+					    <div class="col-12 pb-4">
 					      <label class="sr font-weight-bold" for="password">Password</label>
 					      <div class="input-group">
 					        <input type="password" class="form-control" id="password" placeholder="Strong Password" aria-describedby="passwordHelpBlock" name="password" required>
