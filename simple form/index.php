@@ -16,7 +16,7 @@
 			<div class="col text-center">
 				<h1>Contact Form</h1>
 				<p>Please fill in your details below. Kindly note that ALL fields are required. Thank you!</p>
-				<form class="pt-3 my-4" action="form.php" method="post">
+				<form class="pt-3 my-4" action="form.php" method="post" onsubmit="return genderCheck()">
 					<div class="row justify-content-center mx-md-5 px-md-4">
 					    <div class="col-6">
 					      <label class="sr font-weight-bold" for="firstName">First Name</label>
@@ -50,13 +50,16 @@
 					    </div>
 					    <div class="col-6 col-md-4 pb-md-4">
 					      <label class="sr font-weight-bold">Gender</label>
+					      	<div style="display:none; color:red; " id="chk_option_error">
+					      	Please select at least one option.
+					      	</div>
 					      	<div class="form-inline justify-content-center">
 						      <div class="custom-control custom-checkbox pr-3">
-						        <input type="checkbox" class="custom-control-input" id="male">
+						        <input type="checkbox" class="custom-control-input" id="male" name="genderCheck">
 						        <label class="custom-control-label" for="male">Male</label>
 						      </div>
 						      <div class="custom-control custom-checkbox">
-						        <input type="checkbox" class="custom-control-input" id="female">
+						        <input type="checkbox" class="custom-control-input" id="female" name="genderCheck">
 						        <label class="custom-control-label" for="female">Female</label>
 						      </div>
 						    </div>
@@ -82,7 +85,7 @@
 					      </div>
 					    </div>
 					    <div class="col-12">
-					      <button type="submit" class="btn btn-danger mr-auto text-white px-4 w-100" name="submit" onclick="genderCheck()">Submit</button>
+					      <button type="submit" class="btn btn-danger mr-auto text-white px-4 w-100" name="submit">Submit</button>
 					    </div>
 					</div>
 				</form>			
@@ -98,17 +101,20 @@
 	<!-- END SCRIPTS -->
 
 	<script type="text/javascript">
-		function genderCheck(){
-			if(male.checked==false && female.checked==false )
-			{
-			 alert("You must select male or female");
-			 return false;
-			 }
-			if(male.checked==true && female.checked==true )
-			{
-			 alert("You must select one gender male or female");
-			 return false;
-			 }
+		function genderCheck()
+		{
+		    var form_data = new FormData(document.querySelector("form"));
+		    
+		    if(!form_data.has("genderCheck"))
+		    {
+		        document.getElementById("chk_option_error").style.display = "block";
+		        return false;
+		    }
+		    else
+		    {
+		        document.getElementById("chk_option_error").style.display = "none";
+		        return true;
+		    }
 		}
 	</script>
 </body>
