@@ -82,7 +82,7 @@
 					      </div>
 					    </div>
 					    <div class="col-12">
-					      <button type="submit" class="btn btn-danger mr-auto text-white px-4 w-100" name="submit">Submit</button>
+					      <button type="submit" class="btn btn-danger mr-auto text-white px-4 w-100" name="submit" onclick="genderCheck()">Submit</button>
 					    </div>
 					</div>
 				</form>			
@@ -96,5 +96,20 @@
 		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 	<!-- END SCRIPTS -->
+
+	<script type="text/javascript">
+		function genderCheck(){
+			if(male.checked==false && female.checked==false )
+			{
+			 alert("You must select male or female");
+			 return false;
+			 }
+			if(male.checked==true && female.checked==true )
+			{
+			 alert("You must select one gender male or female");
+			 return false;
+			 }
+		}
+	</script>
 </body>
 </html>
