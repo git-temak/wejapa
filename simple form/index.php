@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Test Form</title>
+	<title>Simple Signup Form</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- BOOTSTRAP V4 -->
@@ -14,9 +14,9 @@
 	<div class="container py-4 py-md-5">
 		<div class="row mx-auto">
 			<div class="col text-center">
-				<h1>Contact Form</h1>
+				<h1>Signup Form</h1>
 				<p>Please fill in your details below. Kindly note that ALL fields are required. Thank you!</p>
-				<form class="pt-3 my-4" action="form.php" method="post" onsubmit="return genderValidation()">
+				<form class="pt-3 my-4" action="form.php" method="post" onsubmit="return !!(genderValidation() & departmentValidation());">
 					<div class="row justify-content-center mx-md-5 px-md-4">
 					    <div class="col-6">
 					      <label class="sr font-weight-bold" for="firstName">First Name</label>
@@ -39,11 +39,11 @@
 					    <div class="col-6 py-4">
 					      <label class="sr font-weight-bold" for="dob">Date of Birth</label>
 					      <div class="input-group">
-					        <input type="date" class="form-control" id="dob" placeholder="Date of Birth" max="<?=date('Y-m-d',strtotime(date('Y-m-d')))?>" name="dob" required>
+					        <input type="date" class="form-control" id="dob" placeholder="Date of Birth" max="<?=date('Y-m-d',strtotime(date('d-m-Y')))?>" name="dob" required>
 					      </div>
 					    </div>
 					    <div class="col-6 col-md-3 pb-md-4">
-					      <label class="sr font-weight-bold" for="favColor" id="color">Favorite color:</label>
+					      <label class="sr font-weight-bold" for="favColor" id="color">Favourite Colour:</label>
 					      <div class="input-group">
 					        <input type="color" class="form-control" id="favColor" name="favColor" required>
 					      </div>
@@ -67,7 +67,7 @@
 					    <div class="col-6 col-md-5 pb-md-4">
 					      <label class="sr font-weight-bold" for="department">Department</label>
 					      <div class="form-group">
-					        <select class="form-control" id="department" required>
+					        <select class="form-control" name="department" id="department">
 					            <option selected disabled>Select Department...</option>
 					            <option value="IT">IT</option>
 					            <option value="HR">HR</option>
@@ -116,6 +116,20 @@
 		        return true;
 		    }
 		}
+
+		function departmentValidation()
+            {
+                var e = document.getElementById("department");
+                var strUser = e.options[e.selectedIndex].value;
+
+                var strUser1 = e.options[e.selectedIndex].text;
+                if(strUser==0)
+                {
+                    alert("Please select a department");
+                    return false;
+                }
+                return true;
+            }
 	</script>
 </body>
 </html>
