@@ -8,42 +8,22 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 </head>
 <?php
-	$fname=$_POST['firstName'];
- 	$lname=$_POST['lastName'];
- 	$dob=$_POST['dob'];
- 	$email=$_POST['email'];
- 	$favColor=$_POST['favColor'];
- 	$gender=$_POST['gender'];
- 	$department=$_POST['department'];
- 	$password=$_POST['password'];
+session_start();
+
+if(!empty($_SESSION['genderCheck'])){foreach($_SESSION['genderCheck'] as $selected){}}
 ?>
-<body style="background-color:<?php echo $favColor ?>">
+<body style="background-color:<?php echo $_SESSION['favColor'] ?>">
 	<div class="container py-4 py-md-5">
 		<div class="row">
 			<?php
-			 	// Validate password strength
-				$uppercase = preg_match('@[A-Z]@', $password);
-				$lowercase = preg_match('@[a-z]@', $password);
-				$number    = preg_match('@[0-9]@', $password);
-				$symbol = preg_match('@[^\w]@', $password);
-
-			 	if(isset($_POST['submit'])){
-
-		 		if(!empty($_POST['genderCheck'])){foreach($_POST['genderCheck'] as $selected){}}
-			 	
 			 	echo '<div class="col text-center text-white"><h2><u>Recorded Data</u></h2><br>
-						<h4 class="text-danger"><b>First Name:</b> '. $fname .'</h4><br>
-						<h4 class="text-danger"><b>Last Name:</b> '. $lname .'</h4><br>
-						<h4 class="text-danger"><b>Email Address:</b> '. $email .'</h4><br>
-						<h4 class="text-danger"><b>Date of Birth:</b> '. $dob .'</h4><br>
-						<h4 class="text-danger"><b>Department:</b> '. $department .'</h4><br>
+						<h4 class="text-danger"><b>First Name:</b> '. $_SESSION['fname'] .'</h4><br>
+						<h4 class="text-danger"><b>Last Name:</b> '. $_SESSION['lname'] .'</h4><br>
+						<h4 class="text-danger"><b>Email Address:</b> '. $_SESSION['email'] .'</h4><br>
+						<h4 class="text-danger"><b>Date of Birth:</b> '. $_SESSION['dob'] .'</h4><br>
+						<h4 class="text-danger"><b>Department:</b> '. $_SESSION['department'] .'</h4><br>
 						<h4 class="text-danger"><b>Gender:</b> '. $selected .'</h4><br>
-						<h4 class="text-danger"><b>Favourite Color:</b> '. $favColor .'</h4></div>';
-
-					if(!$uppercase || !$lowercase || !$number || !$symbol || strlen($password) < 15) {
-					    echo 'Your password must be at least 15 characters long, contain numbers, uppercase and lowercase letters, and must contain special characters such as %^&@.';
-					}
-				}
+						<h4 class="text-danger"><b>Favourite Color:</b> '. $_SESSION['favColor'] .'</h4></div>';
 			?>	
 		</div>
 	</div>
