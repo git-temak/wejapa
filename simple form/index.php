@@ -11,59 +11,59 @@
 	</style>
 </head>
 <?php
-session_start(); 
+	session_start(); 
 
-$_SESSION['fname']=$_POST['firstName'];
-$_SESSION['lname']=$_POST['lastName'];
-$_SESSION['dob']=$_POST['dob'];
-$_SESSION['email']=$_POST['email'];
-$_SESSION['favColor']=$_POST['favColor'];
-$_SESSION['department']=$_POST['department'];
-$_SESSION['genderCheck']=$_POST['genderCheck'];
+	$_SESSION['fname']= htmlspecialchars($_POST['firstName']);
+	$_SESSION['lname']= htmlspecialchars($_POST['lastName']);
+	$_SESSION['dob']= htmlspecialchars($_POST['dob']);
+	$_SESSION['email']= htmlspecialchars($_POST['email']);
+	$_SESSION['favColor']= htmlspecialchars($_POST['favColor']);
+	$_SESSION['department']= htmlspecialchars($_POST['department']);
+	$_SESSION['genderCheck']= htmlspecialchars($_POST['genderCheck']);
 
-$password=$_POST['password'];
-// Validate password strength
-$uppercase = preg_match('@[A-Z]@', $password);
-$lowercase = preg_match('@[a-z]@', $password);
-$number    = preg_match('@[0-9]@', $password);
-$symbol = preg_match('@[^\w]@', $password);
+	$password=$_POST['password'];
+	// Validate password strength
+	$uppercase = preg_match('@[A-Z]@', $password);
+	$lowercase = preg_match('@[a-z]@', $password);
+	$number    = preg_match('@[0-9]@', $password);
+	$symbol = preg_match('@[^\w]@', $password);
 
-	if (isset($_POST['submit'])) {
-		//check first name
-		if(empty($_POST['firstName']))
-		$msg_fname = "Please enter a first name with letters only";
-		$name_field = $_POST['firstName'];
-		preg_match('/^[a-zA-Z ]*$/', $name_field);
+		if (isset($_POST['submit'])) {
+			//check first name
+			if(empty($_POST['firstName']))
+			$msg_fname = "Please enter a first name with letters only";
+			$name_field = $_POST['firstName'];
+			preg_match('/^[a-zA-Z ]*$/', $name_field);
 
-		//check last name
-		if(empty($_POST['lastName']))
-		$msg_lname = "Please enter a last name with letters only";
-		$name_field = $_POST['lastName'];
-		preg_match('/^[a-zA-Z ]*$/', $name_field);
+			//check last name
+			if(empty($_POST['lastName']))
+			$msg_lname = "Please enter a last name with letters only";
+			$name_field = $_POST['lastName'];
+			preg_match('/^[a-zA-Z ]*$/', $name_field);
 
-		//check email
-		if(empty($_POST['email']))
-		$msg_email = "Please enter a valid email address";
-		$email_field = $_POST['email'];
-		preg_match('/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/', $email_field);
+			//check email
+			if(empty($_POST['email']))
+			$msg_email = "Please enter a valid email address";
+			$email_field = $_POST['email'];
+			preg_match('/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/', $email_field);
 
-		//check department
-		if(empty($_POST['department']))
-		$msg_department = "Please select your department";
+			//check department
+			if(empty($_POST['department']))
+			$msg_department = "Please select your department";
 
-		//check gender
-		if(empty($_POST['genderCheck']))
-		$msg_gender = "Please select at least one option";
+			//check gender
+			if(empty($_POST['genderCheck']))
+			$msg_gender = "Please select at least one option";
 
-		//check password
-		if(!$uppercase || !$lowercase || !$number || !$symbol || strlen($password) < 15)
-		$msg_password = "Your password must be at least 15 characters long, contain numbers, uppercase and lowercase letters, and must contain special characters such as %^&@.";
+			//check password
+			if(!$uppercase || !$lowercase || !$number || !$symbol || strlen($password) < 15)
+			$msg_password = "Your password must be at least 15 characters long, contain numbers, uppercase and lowercase letters, and must contain special characters such as %^&@.";
 
-		// if validation is all correct 
-		if($msg_fname=="" && $msg_lname=="" && $msg_email=="" && $msg_department=="" && $msg_gender=="" && $msg_password==""){
-			header ('Location: form.php');
+			// if validation is all correct 
+			if($msg_fname=="" && $msg_lname=="" && $msg_email=="" && $msg_department=="" && $msg_gender=="" && $msg_password==""){
+				header ('Location: form.php');
+			}
 		}
-	}
 ?>
 <body>
 	<div class="container py-4 py-md-5">
@@ -76,34 +76,34 @@ $symbol = preg_match('@[^\w]@', $password);
 					    <div class="col-6">
 					      <label class="sr font-weight-bold" for="firstName">First Name</label>
 					      <div class="input-group">
-					        <input type="text" class="form-control" id="firstName" placeholder="First Name" name="firstName">
+					        <input type="text" class="form-control" id="firstName" placeholder="First Name" name="firstName" value="<?php echo $_SESSION['fname']; ?>">
 					      </div>
 					      <?php echo "<small class='form-text text-danger'>".$msg_fname."</small>"; ?>
 					    </div>
 					    <div class="col-6">
 					      <label class="sr font-weight-bold" for="lastName">Last Name</label>
 					      <div class="input-group">
-					        <input type="text" class="form-control" id="lastName" placeholder="Last Name" name="lastName">
+					        <input type="text" class="form-control" id="lastName" placeholder="Last Name" name="lastName" value="<?php echo $_SESSION['lname']; ?>">
 					      </div>
 					      <?php echo "<small class='form-text text-danger'>".$msg_lname."</small>"; ?>
 					    </div>
 					    <div class="col-6 py-4">
 					      <label class="sr font-weight-bold" for="email">Email</label>
 					      <div class="input-group">
-					        <input type="email" class="form-control" id="email" placeholder="name@email.com" name="email">
+					        <input type="email" class="form-control" id="email" placeholder="name@email.com" name="email" value="<?php echo $_SESSION['email']; ?>">
 					      </div>
 					      <?php echo "<small class='form-text text-danger'>".$msg_email."</small>"; ?>
 					    </div>
 					    <div class="col-6 py-4">
 					      <label class="sr font-weight-bold" for="dob">Date of Birth</label>
 					      <div class="input-group">
-					        <input type="date" class="form-control" id="dob" placeholder="Date of Birth" max="<?=date('Y-m-d',strtotime(date('Y-m-d')))?>" name="dob" required>
+					        <input type="date" class="form-control" id="dob" placeholder="Date of Birth" max="<?=date('Y-m-d',strtotime(date('Y-m-d')))?>" name="dob" value="<?php echo $_SESSION['dob']; ?>" required>
 					      </div>
 					    </div>
 					    <div class="col-6 col-md-3 pb-md-4">
 					      <label class="sr font-weight-bold" for="favColor" id="color">Favourite Colour:</label>
 					      <div class="input-group">
-					        <input type="color" class="form-control" id="favColor" name="favColor" required>
+					        <input type="color" class="form-control" id="favColor" name="favColor" value="<?php echo $_SESSION['favColor']; ?>" required>
 					      </div>
 					    </div>
 					    <div class="col-6 col-md-4 pb-md-4">
