@@ -24,7 +24,7 @@
 		<h1>Posts</h1>
 		<div class="row d-flex justify-content-between justify-content-lg-center mx-3 mx-lg-0 pt-3">
 			<?php foreach($posts as $post) : ?>
-				<div class="col-12 col-lg-4 card text-white bg-primary px-0 mb-3 mx-lg-2">
+				<div class="col-12 col-lg-4 card cst-crd text-white bg-primary px-0 mb-3 mx-lg-2">
 				  <div class="card-header">Created on <?php echo $post['created_at']; ?> by <span class="font-weight-bold"><?php echo $post['author']; ?></span></div>
 				  <div class="card-body">
 				    <h2 class="card-title text-capitalize"><a class="text-white nav-link" href="post.php?id=<?php echo $post['id'] ?>"><?php echo $post['title']; ?></a></h2>
