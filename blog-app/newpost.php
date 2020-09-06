@@ -30,7 +30,7 @@
 		if (in_array($fileExt, $allowed)) {
 			if ($fileError === 0) {
 				if ($fileSize < 5242881) {
-					$fileUniqueName = $fileDefaultExt[0]."_".uniqid('', true).".".$fileExt;
+					$fileUniqueName = uniqid('', true).".".$fileExt;
 					move_uploaded_file($fileTempName, $fileDestination.$fileUniqueName);
 				} else {
 				echo "File is larger than 5MB";
